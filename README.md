@@ -80,3 +80,16 @@ npm run build
 - `GET /api/state` — Doctors, live slots, and appointments ledger
 - `POST /api/reset` — Reset `clinic.db` to seeded state
 - `POST /api/simulate-tool` — Invoke clinic tools directly (`check_doctor_availability`, `book_appointment`, `cancel_appointment`) and trigger live `/ws/events` updates
+REST & Debug Endpoints
+Method	Path	Description
+GET	/api/health	Engine status & API‑key readiness
+GET	/api/state	Doctors, live slots, and appointments ledger
+POST	/api/reset	Reset clinic.db to seeded state
+POST	/api/simulate-tool	Invoke clinic tools directly (check_doctor_availability, book_appointment, cancel_appointment) and trigger live /ws/events updates
+WS	/ws/events	Real‑time telemetry (transcripts, tool calls, DB updates, etc.)
+WS	/ws/voice	Audio stream for the voice pipeline
+Important notes
+Phone number handling – The assistant reads back the caller’s number digit‑by‑digit and waits for an explicit “Yes” before any book_appointment or cancel_appointment call. This satisfies the critical identity rule in SYSTEM_PROMPT.
+WebSocket URL – The frontend now points to ws://localhost:8000/ws/events (backend port 8000). If you run the backend on another port, adjust the URL in frontend/src/App.tsx accordingly.
+.gitignore – .env is already ignored; never commit your secret keys.
+Embedded repo – The project contains an embedded pony repository. If you don’t need it, you can remove it with git rm --cached ponytail.
