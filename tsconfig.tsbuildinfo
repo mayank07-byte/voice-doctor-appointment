@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/phonecallmodal.tsx","./src/lib/audio.test.ts","./src/lib/audio.ts","./src/lib/proto.test.ts","./src/lib/proto.ts"],"version":"5.9.3"}
